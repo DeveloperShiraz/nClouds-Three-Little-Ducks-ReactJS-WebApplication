@@ -160,6 +160,14 @@
     border-radius: 4px;
 }
 
+/* Primary Button Link */
+.primary-button-link {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    max-width: 380px;
+}
+
 /* Primary Button */
 .primary-button {
     background: #7FA9D4;
@@ -174,7 +182,6 @@
     box-shadow: 0 2px 8px rgba(127, 169, 212, 0.25);
     margin-bottom: 1rem;
     width: 100%;
-    max-width: 380px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -196,14 +203,15 @@
 }
 
 .login-link a {
-    color: #1a1a1a;
-    text-decoration: underline;
-    font-weight: 500;
+    color: #7FA9D4;
+    text-decoration: none;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .login-link a:hover {
-    color: #7FA9D4;
+    color: #6B96C3;
+    text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -234,6 +242,10 @@
 
     .description {
         font-size: 0.9rem;
+    }
+
+    .primary-button-link {
+        max-width: 100%;
     }
 
     .primary-button {

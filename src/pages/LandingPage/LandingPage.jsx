@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './LandingPage.css'
 
 function LandingPage() {
@@ -93,12 +94,14 @@ function LandingPage() {
                     ))}
                 </div>
 
-                <button className="primary-button">
-                    Sign up with email
-                </button>
+                <Link to="/signup" className="primary-button-link">
+                    <button className="primary-button">
+                        Sign up with email
+                    </button>
+                </Link>
 
                 <div className="login-link">
-                    Already have an account? <a href="#">Log in</a>
+                    Already have an account? <Link to="/signin">Log in</Link>
                 </div>
             </main>
         </div>
