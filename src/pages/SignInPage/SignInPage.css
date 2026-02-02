@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
+/* Message Styles */
+.error-message {
+    background: #FEE2E2;
+    border: 1px solid #EF4444;
+    color: #991B1B;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    background: #D1FAE5;
+    border: 1px solid #10B981;
+    color: #065F46;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
 .auth-container {
     min-height: 100dvh;
     display: flex;
