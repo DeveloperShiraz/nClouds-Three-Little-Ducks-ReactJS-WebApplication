@@ -109,8 +109,8 @@ function BottomNavigationFinal() {
 
             {/* Video - Play Circle Icon */}
             <button
-                className="bottom-nav-item"
-                onClick={() => console.log('Video clicked')}
+                className={`bottom-nav-item ${isActive('/video') ? 'active' : ''}`}
+                onClick={() => navigate('/video')}
             >
                 <svg className="nav-icon" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -121,8 +121,8 @@ function BottomNavigationFinal() {
 
             {/* Ask - Chat Bubble Icon */}
             <button
-                className="bottom-nav-item"
-                onClick={() => console.log('Ask clicked')}
+                className={`bottom-nav-item ${isActive('/ask') ? 'active' : ''}`}
+                onClick={() => navigate('/ask')}
             >
                 <svg className="nav-icon" viewBox="0 0 24 24">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
