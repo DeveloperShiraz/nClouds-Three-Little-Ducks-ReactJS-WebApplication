@@ -5,6 +5,7 @@ import SignInPage from './pages/SignInPage/SignInPage'
 import CreateProfilePage from './pages/CreateProfilePage/CreateProfilePage'
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage'
 import DashboardPage from './pages/DashboardPage/DashboardPage'
+import RoadmapPage from './pages/RoadmapPage/RoadmapPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/create-profile" element={<CreateProfilePage />} />
         <Route path="/edit-profile" element={<EditProfilePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/roadmap" element={<RoadmapPage />} />
       </Routes>
     </Router>
   )

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+.roadmap-container {
+    min-height: 100dvh;
+    background-color: #f9fafb;
+}
+
+.roadmap-content {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.roadmap-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.roadmap-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.roadmap-disclaimer {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #4b5563;
+    /* Gray-600 */
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
