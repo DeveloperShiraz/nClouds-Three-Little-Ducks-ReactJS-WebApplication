@@ -16,7 +16,22 @@ To run the project locally, follow these steps:
     npm run dev
     ```
 
-3.  **Open in Browser**:
+3. **Run ampx sandbox --once**:
+    ```bash
+    npm run sandbox
+    ```
+
+    To use that Make Sure you are adding:
+    ```
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "sandbox": "env-cmd -f .env.local ampx sandbox" 
+    }
+    ```
+
+
+4.  **Open in Browser**:
     Open the URL shown in your terminal (usually `http://localhost:5173/`).
 
 ## Official Plugins

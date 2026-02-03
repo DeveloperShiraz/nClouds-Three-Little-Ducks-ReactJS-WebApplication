@@ -1,4 +1,5 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { askExpert } from '../functions/ask-expert/resource';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -16,6 +17,15 @@ const schema = a.schema({
             babyGender: a.enum(['BOY', 'GIRL', 'UNSPECIFIED']),
         })
         .authorization((allow) => [allow.owner()]),
+
+    askExpert: a.query()
+        .arguments({
+            question: a.string().required(),
+            sessionId: a.string()
+        })
+        .returns(a.json())
+        .authorization(allow => [allow.authenticated()])
+        .handler(a.handler.function(askExpert))
 });
 
 export type Schema = ClientSchema<typeof schema>;

@@ -1,8 +1,13 @@
 import { generateClient } from 'aws-amplify/data'
 
-// Generate the Amplify Data client
+// Generate the Amplify Data client lazily to ensure config is loaded
 // Note: This requires amplify/data/resource.ts to be defined and backend deployed
-const client = generateClient()
+let client = null;
+
+const getClient = () => {
+    if (!client) client = generateClient();
+    return client;
+}
 
 /**
  * Data Service
@@ -21,7 +26,7 @@ const DataService = {
      */
     async createProfile(profileData) {
         try {
-            const { errors, data: newProfile } = await client.models.UserProfile.create(profileData)
+            const { errors, data: newProfile } = await getClient().models.UserProfile.create(profileData)
 
             if (errors) {
                 throw new Error(errors[0].message)
@@ -47,7 +52,7 @@ const DataService = {
     async getUserProfile() {
         try {
             // List profiles where owner == current user (handled automatically by Amplify Auth rules)
-            const { errors, data: profiles } = await client.models.UserProfile.list()
+            const { errors, data: profiles } = await getClient().models.UserProfile.list()
 
             if (errors) {
                 // If we can't fetch profiles, returning null might be safer than throwing
@@ -87,7 +92,7 @@ const DataService = {
      */
     async updateProfile(profile, updates) {
         try {
-            const { errors, data: updatedProfile } = await client.models.UserProfile.update({
+            const { errors, data: updatedProfile } = await getClient().models.UserProfile.update({
                 id: profile.id,
                 ...updates
             })
