@@ -45,8 +45,19 @@ export const handler = async (event: any) => {
 
         const response = await bedrockClient.send(command);
 
+        let answerText = response.output?.text || "I'm sorry, I couldn't find an answer to that.";
+
+        // Cleanup: Remove "Action: ... Response:" chain of thought artifacts if present
+        // Example: "Action: GlobalDataSource.search(...) Response: The answer is..."
+        // We want to keep everything AFTER "Response: "
+        if (answerText.includes('Response:')) {
+            const parts = answerText.split('Response:');
+            // Take the last part to be safe (in case of nested thinking)
+            answerText = parts[parts.length - 1].trim();
+        }
+
         return {
-            answer: response.output?.text || "I'm sorry, I couldn't find an answer to that.",
+            answer: answerText,
             sessionId: response.sessionId
         };
 
