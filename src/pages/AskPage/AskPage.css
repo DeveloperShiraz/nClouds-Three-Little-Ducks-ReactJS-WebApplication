@@ -91,9 +91,18 @@
 }
 
 .bot-avatar {
-    font-size: 1.25rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     margin-top: -0.25rem;
-    /* slight alignment fix */
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.bot-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .chat-input-area {
@@ -141,15 +150,15 @@
     background-color: #B4D1EB;
     /* Lighter blue instead of gray */
     cursor: not-allowed;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .send-icon {
     width: 20px;
     height: 20px;
-    fill: white;
-    margin-left: 2px;
-    /* Visual centering */
+    object-fit: contain;
+    /* Force the image to be white using filters (useful if the PNG is black/colored) */
+    filter: brightness(0) invert(1);
 }
 
 .typing-indicator span {

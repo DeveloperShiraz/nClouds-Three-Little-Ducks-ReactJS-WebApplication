@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { generateClient } from 'aws-amplify/data'
 import TopNavigation from '../../components/TopNavigation/TopNavigation'
 import BottomNavigation from '../../components/BottomNavigation/BottomNavigation'
+import sendIcon from '../../assets/Custom Icons/MessageSendButton.png'
 import './AskPage.css'
 
 
@@ -79,13 +80,19 @@ function AskPage() {
                     <div className="messages-list">
                         {messages.map((msg) => (
                             <div key={msg.id} className={`message-bubble ${msg.sender} ${msg.isError ? 'error' : ''}`}>
-                                {msg.sender === 'bot' && <div className="bot-avatar">🦆</div>}
+                                {msg.sender === 'bot' && (
+                                    <div className="bot-avatar">
+                                        <img src="/Logo.png" alt="Duck" />
+                                    </div>
+                                )}
                                 <div className="message-text">{msg.text}</div>
                             </div>
                         ))}
                         {loading && (
                             <div className="message-bubble bot">
-                                <div className="bot-avatar">🦆</div>
+                                <div className="bot-avatar">
+                                    <img src="/Logo.png" alt="Duck" />
+                                </div>
                                 <div className="typing-indicator">
                                     <span>●</span><span>●</span><span>●</span>
                                 </div>
@@ -104,9 +111,7 @@ function AskPage() {
                             disabled={loading}
                         />
                         <button type="submit" className="send-button" disabled={loading || !input.trim()}>
-                            <svg viewBox="0 0 24 24" className="send-icon">
-                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                            </svg>
+                            <img src={sendIcon} alt="Send" className="send-icon" />
                         </button>
                     </form>
                 </div>
