@@ -83,7 +83,7 @@ function EditProfilePage() {
         <div className="create-profile-container">
             <div className="profile-card">
                 <div className="profile-header">
-                    <img src="/Logo.png" alt="Three Little Ducks Logo" className="auth-logo" />
+                    <img src="/LogoWithCompanyName.png" alt="Three Little Ducks Logo" className="auth-logo" />
                     <h1 className="profile-title">Edit Profile</h1>
                     <p className="profile-subtitle">Update information about yourself and your Keiki</p>
                 </div>

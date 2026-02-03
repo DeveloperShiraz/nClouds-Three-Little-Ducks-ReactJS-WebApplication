@@ -14,7 +14,7 @@ function TopNavigation() {
 
     return (
         <header className="top-nav-header">
-            <img src="/Logo.png" alt="Three Little Ducks Logo" className="top-nav-logo" />
+            <img src="/LogoWithCompanyName.png" alt="Three Little Ducks" className="top-nav-logo" />
 
             <div className="hamburger-menu">
                 <button
