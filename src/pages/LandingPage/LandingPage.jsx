@@ -1,9 +1,22 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import AuthService from '../../services/AuthService'
 import './LandingPage.css'
 
 function LandingPage() {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        checkUser()
+    }, [])
+
+    const checkUser = async () => {
+        const { success } = await AuthService.getCurrentUser()
+        if (success) {
+            navigate('/dashboard')
+        }
+    }
 
     const slides = [
         {
