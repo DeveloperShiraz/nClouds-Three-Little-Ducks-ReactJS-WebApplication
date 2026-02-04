@@ -1,4 +1,6 @@
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { GetObjectCommand } from '@aws-sdk/client-s3';
 
 const client = new S3Client({ region: 'us-east-1' });
 const BUCKET_NAME = 'bedrock-video-multimodal-training-data';
@@ -11,17 +13,29 @@ export const handler = async (event) => {
         const response = await client.send(command);
 
         const videoFiles = response.Contents?.filter(item =>
-            item.Key.endsWith('.mp4') || item.Key.endsWith('.mov') || item.Key.endsWith('.webm')
+            item.Key?.endsWith('.mp4') || item.Key?.endsWith('.mov') || item.Key?.endsWith('.webm')
         ) || [];
 
-        const videos = videoFiles.map(file => ({
-            key: file.Key,
-            size: file.Size,
-            lastModified: file.LastModified,
-            // Since it's a public/training data bucket, we construct the URL. 
-            // If it requires auth, we'd generate a presigned URL here.
-            url: `https://${BUCKET_NAME}.s3.us-east-1.amazonaws.com/${file.Key}`
-        }));
+        // Generate presigned URLs for each video (valid for 1 hour)
+        const videos = await Promise.all(
+            videoFiles.map(async (file) => {
+                const getObjectCommand = new GetObjectCommand({
+                    Bucket: BUCKET_NAME,
+                    Key: file.Key,
+                });
+
+                const presignedUrl = await getSignedUrl(client, getObjectCommand, {
+                    expiresIn: 3600, // 1 hour
+                });
+
+                return {
+                    key: file.Key,
+                    size: file.Size,
+                    lastModified: file.LastModified,
+                    url: presignedUrl,
+                };
+            })
+        );
 
         return JSON.stringify(videos);
     } catch (error) {
