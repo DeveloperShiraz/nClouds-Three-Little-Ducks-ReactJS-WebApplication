@@ -1,0 +1,159 @@
+.video-content {
+    padding-bottom: 80px;
+    height: calc(100vh - 80px); /* Fill remaining space */
+    overflow: hidden; /* Manage scroll internally */
+}
+
+.video-layout {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.main-player-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-wrapper {
+    background: black;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.main-video-player {
+    width: 100%;
+    max-height: 60vh;
+    display: block;
+}
+
+.video-title {
+    padding: 1rem;
+    background: white;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+    font-size: 1.1rem;
+    border-top: 1px solid #eee;
+}
+
+.playlist-sidebar {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.playlist-sidebar h3 {
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    font-family: 'Poppins', sans-serif;
+    color: #374151;
+}
+
+.video-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.video-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.video-item:hover {
+    background-color: #f9fafb;
+}
+
+.video-item.active {
+    background-color: #e5edfa; /* Light brand blue */
+}
+
+.video-thumbnail-placeholder {
+    width: 80px;
+    height: 50px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; /* Text truncation fix */
+}
+
+.video-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1f2937;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-meta {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.error-banner {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #6b7280;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .video-layout {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .playlist-sidebar {
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    .video-content {
+        height: auto;
+        overflow-y: auto;
+    }
+}

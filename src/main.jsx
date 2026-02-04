@@ -5,7 +5,9 @@ import outputs from '../amplify_outputs.json'
 import './index.css'
 import App from './App.jsx'
 
+console.log("Configuring Amplify...", outputs)
 Amplify.configure(outputs)
+console.log("Amplify configured successfully")
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

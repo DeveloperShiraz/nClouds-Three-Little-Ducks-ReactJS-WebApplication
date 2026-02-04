@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 import { askExpert } from '../functions/ask-expert/resource';
+import { getVideos } from '../functions/get-videos/resource';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -25,7 +26,12 @@ const schema = a.schema({
         })
         .returns(a.json())
         .authorization(allow => [allow.authenticated()])
-        .handler(a.handler.function(askExpert))
+        .handler(a.handler.function(askExpert)),
+
+    getVideos: a.query()
+        .returns(a.json()) // Returns JSON string of videos
+        .authorization(allow => [allow.authenticated()])
+        .handler(a.handler.function(getVideos))
 });
 
 export type Schema = ClientSchema<typeof schema>;
